@@ -4,10 +4,19 @@
 <head>
     <title>My Day</title>
 </head>
-<style> </style>
+<style>
+ a.logout {
+      float: right;
+      display: block;
+      font-size: 150%;
+      color: rgba(237, 21, 194, 0.852);
+      outline-style: outset;
+      outline-color: rgb(19, 17, 17);
+    } </style>
 
 <body>
-    <h1>Good Morning</h1><br>
+    <a class="logout" href="{{url_for('handleLogout')}}">Log Out</a>
+    <center><h1>Good Morning: {{user}}</h1></center>
     
 </body>
 

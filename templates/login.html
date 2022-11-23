@@ -11,18 +11,18 @@
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-        <div class="notification is-danger">
-         {{ messages[0] }}
-        </div>
+    {% for message in messages %}
+    <b style="color:blue;" ,style="font-size:500%" ;>{{message}}</b>
+    {% endfor %}
     {% endif %}
     {% endwith %}
 
     <form method="POST" action="/login">
         <label for="Username">Username:</label>
-        <input type="text" id="Username" name="Username" placeholder="Enter your username"><br>
+        <input type="text" id="Username" name="Username" placeholder="Enter your username">
         <input type="submit" value="Login">
     </form><br>
-    <a class="" href="">Sign Up</a>
+    <a href="/">Sign Up</a>
 </body>
 
 </html>
