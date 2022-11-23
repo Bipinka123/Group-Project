@@ -2,11 +2,27 @@
 <html lang="en">
 
 <head>
-    <title></title>
+    <title>Log In</title>
 </head>
 <style> </style>
 
 <body>
+    <h1>Log In</h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="notification is-danger">
+         {{ messages[0] }}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="/login">
+        <label for="Username">Username:</label>
+        <input type="text" id="Username" name="Username" placeholder="Enter your username"><br>
+        <input type="submit" value="Login">
+    </form><br>
+    <a class="" href="">Sign Up</a>
 </body>
 
 </html>
