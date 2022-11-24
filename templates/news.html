@@ -10,11 +10,25 @@
     a.logout {
         float: right;
         float: top;
+        margin-top: 1px;
+        margin-right: 10px;
         display: block;
         font-size: 150%;
         color: rgba(237, 21, 194, 0.852);
         outline-style: outset;
         outline-color: rgb(19, 17, 17);
+    }
+
+    a.home {
+        float: left;
+        float: top;
+        margin-top: 1px;
+        margin-left: 10px;
+        display: block;
+        font-size: 150%;
+        color: rgba(21, 237, 57, 0.852);
+        outline-style: outset;
+        outline-color: rgb(8, 35, 187);
     }
 
     h1 {
@@ -45,9 +59,11 @@
 </style>
 
 <body>
-    <a class="logout" href="{{url_for('handleLogout')}}">Log Out</a>
+    <span> <a class="home" href="{{url_for('main_page')}}">Home</a>
+        <a class="logout" href="{{url_for('handle_logout')}}">Log Out</a>
 
-    <h1>Good Morning: {{user}}</h1>
+        <h1>Good Morning: {{user}}</h1>
+    </span>
     <article class="all-browsers">
         <h2>Top ten news</h2>
 

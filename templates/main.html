@@ -21,16 +21,62 @@
         text-align: center;
     }
 
- 
+    h3 {
+        margin-left: 320px;
+        color: green;
+    }
+
+    .myDiv {
+        margin-left: 320px;
+
+    }
+
+    textarea {
+        width: 50%;
+        height: 150px;
+        padding: 2px;
+        background-color: rgb(212, 212, 168);
+        margin: 2px 0;
+        box-sizing: border-box;
+        border: 2px solid rgb(13, 35, 231);
+        border-radius: 4px;
+        color: rgb(77, 2, 2);
+        font-size: large;
+    }
+
+    input {
+        width: 10%;
+        height: 400%;
+        background-color: rgb(180, 199, 204);
+        box-sizing: border-box;
+        border: 2px solid rgb(231, 199, 13);
+        border-radius: 4px;
+        color: red;
+        font-size: large;
+    }
 </style>
 
-<body>
-    <a class="logout" href="{{url_for('handleLogout')}}">Log Out</a>
+<body background-color="lightblue">
+    <a class="logout" href="{{url_for('handle_logout')}}">Log Out</a>
 
     <h1>Good Morning: {{user}}</h1>
 
-    <a class="news" href="{{url_for('top_ten_news')}}">Go to News</a>
- 
+    <a class="news" href="{{url_for('top_ten_news')}}">Go to News</a><br><br>
+
+    <a class="book" href="{{url_for('top_selling_books')}}">Go to Top selling books</a><br><br>
+
+    <h3>We Love to hear from you. Please, Leave us your feedback.</h3>
+
+    <div class="myDiv">
+        <form action="/handle_form">
+            <label for="rating"><b>Rating (out of 5):</b></label>
+            <input type="number" id="page_rating" name="page_rating" min="1" max="5"><br><br>
+            <textarea id="movie_comments" name="movie_comments"
+                placeholder="Leave a comment (max 200 words)"></textarea>><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
 </body>
 
 </html>
