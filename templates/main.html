@@ -3,12 +3,34 @@
 
 <head>
     <title>My Day</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<style> </style>
+<style>
+    a.logout {
+        float: right;
+        float: top;
+        display: block;
+        font-size: 150%;
+        color: rgba(237, 21, 194, 0.852);
+        outline-style: outset;
+        outline-color: rgb(19, 17, 17);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+ 
+</style>
 
 <body>
-    <h1>Good Morning</h1><br>
-    
+    <a class="logout" href="{{url_for('handleLogout')}}">Log Out</a>
+
+    <h1>Good Morning: {{user}}</h1>
+
+    <a class="news" href="{{url_for('top_ten_news')}}">Go to News</a>
+ 
 </body>
 
 </html>
