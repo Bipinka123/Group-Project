@@ -69,11 +69,13 @@
 
         <article class="browser">
             {% for news in recent_ten_news %}
-            <h3><b style="color:rgb(241, 92, 6);" ,style="font-size:500%"
-                    ;>{{news["headline"]["main"]}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
-                Updated: {{ news["pub_date"] }}</h3>
+            <p>
+                <b
+                    style="color:rgb(241, 92, 6); font-size: 130%;">{{news["headline"]["main"]}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
+                Updated: {{ news["pub_date"] }}
+            </p>
             <p> {{news["lead_paragraph"]}} </p2><br>
-            <p> {{news["web_url"]}} </p><a href={{ news["web_url"] }}>CLick Here to read more</a><br><br>
+            <p> {{news["web_url"]}} </p><a href={{ news["web_url"] }}>CLick here to read more</a><br><br>
             {% endfor %}
         </article>
     </article>
