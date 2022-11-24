@@ -3,6 +3,8 @@ import flask
 from dotenv import load_dotenv, find_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from flask import redirect, url_for, request, flash
+import requests
+import json
 from flask_login import (
     login_user,
     login_required,
@@ -64,6 +66,29 @@ def handleSignup():
     return redirect(url_for("loginPage"))
 
 
+@app.route("/news")
+def top_ten_news():
+    NYT_ARTICLE_SEARCH_API_BASE_URL = (
+        "https://api.nytimes.com/svc/search/v2/articlesearch.json"
+    )
+    response = requests.get(
+        NYT_ARTICLE_SEARCH_API_BASE_URL,
+        params={
+            "api-key": os.getenv("NYT_ARTICLE_SEARCH_API_KEY"),
+        },
+        timeout=10,
+    )
+
+    json_data = response.json()
+    article_objects = json_data["response"]["docs"]
+
+    recent_ten_news = article_objects
+    user = current_user.username
+    return flask.render_template(
+        "news.html", recent_ten_news=recent_ten_news, user=user
+    )
+
+
 @app.route("/login")
 def loginPage():
     return flask.render_template("login.html")
@@ -82,16 +107,20 @@ def handleLogin():
         login_user(checkUser)
         return redirect(url_for("mainPage"))
 
+
 @app.route("/main", methods=["GET", "POST"])
 @login_required
 def mainPage():
-    user=current_user.username;
+
+    user = current_user.username
     return flask.render_template("main.html", user=user)
+
 
 @app.route("/logout", methods=["GET", "POST"])
 @login_required
 def handleLogout():
     logout_user()
     return redirect(url_for("loginPage"))
+
 
 app.run(debug=True)

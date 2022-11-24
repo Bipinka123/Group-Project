@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Day</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    a.logout {
+        float: right;
+        float: top;
+        display: block;
+        font-size: 150%;
+        color: rgba(237, 21, 194, 0.852);
+        outline-style: outset;
+        outline-color: rgb(19, 17, 17);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .all-browsers {
+        margin: 0;
+        padding: 5px;
+        background-color: lightgray;
+    }
+
+    .all-browsers>h2,
+    .browser {
+        margin: 0;
+        padding: 5px;
+    }
+
+    .browser {
+        background: white;
+    }
+
+    .browser>h3,
+    p {
+        margin: 4px;
+        font-size: 90%;
+    }
+</style>
+
+<body>
+    <a class="logout" href="{{url_for('handleLogout')}}">Log Out</a>
+
+    <h1>Good Morning: {{user}}</h1>
+    <article class="all-browsers">
+        <h2>Top ten news</h2>
+
+        <article class="browser">
+            {% for news in recent_ten_news %}
+            <h3><b style="color:rgb(241, 92, 6);" ,style="font-size:500%"
+                    ;>{{news["headline"]["main"]}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
+                Updated: {{ news["pub_date"] }}</h3>
+            <p> {{news["lead_paragraph"]}} </p2><br>
+            <p> {{news["web_url"]}} </p><a href={{ news["web_url"] }}>CLick Here to read more</a><br><br>
+            {% endfor %}
+        </article>
+    </article>
+</body>
+
+</html>
