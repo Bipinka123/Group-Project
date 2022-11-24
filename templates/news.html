@@ -10,11 +10,25 @@
     a.logout {
         float: right;
         float: top;
+        margin-top: 1px;
+        margin-right: 10px;
         display: block;
         font-size: 150%;
         color: rgba(237, 21, 194, 0.852);
         outline-style: outset;
         outline-color: rgb(19, 17, 17);
+    }
+
+    a.home {
+        float: left;
+        float: top;
+        margin-top: 1px;
+        margin-left: 10px;
+        display: block;
+        font-size: 150%;
+        color: rgba(21, 237, 57, 0.852);
+        outline-style: outset;
+        outline-color: rgb(8, 35, 187);
     }
 
     h1 {
@@ -45,19 +59,23 @@
 </style>
 
 <body>
-    <a class="logout" href="{{url_for('handleLogout')}}">Log Out</a>
+    <span> <a class="home" href="{{url_for('main_page')}}">Home</a>
+        <a class="logout" href="{{url_for('handle_logout')}}">Log Out</a>
 
-    <h1>Good Morning: {{user}}</h1>
+        <h1>Good Morning: {{user}}</h1>
+    </span>
     <article class="all-browsers">
         <h2>Top ten news</h2>
 
         <article class="browser">
             {% for news in recent_ten_news %}
-            <h3><b style="color:rgb(241, 92, 6);" ,style="font-size:500%"
-                    ;>{{news["headline"]["main"]}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
-                Updated: {{ news["pub_date"] }}</h3>
+            <p>
+                <b
+                    style="color:rgb(241, 92, 6); font-size: 130%;">{{news["headline"]["main"]}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
+                Updated: {{ news["pub_date"] }}
+            </p>
             <p> {{news["lead_paragraph"]}} </p2><br>
-            <p> {{news["web_url"]}} </p><a href={{ news["web_url"] }}>CLick Here to read more</a><br><br>
+            <p> {{news["web_url"]}} </p><a href={{ news["web_url"] }}>CLick here to read more</a><br><br>
             {% endfor %}
         </article>
     </article>
