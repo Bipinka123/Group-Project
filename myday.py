@@ -2,6 +2,7 @@
 import os
 import flask
 from dotenv import load_dotenv, find_dotenv
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask import redirect, url_for, request, flash
 import requests
@@ -38,7 +39,7 @@ class Persons(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
-
+    password = db.Column(db.String(100))
 
 with app.app_context():
     db.create_all()
@@ -54,13 +55,27 @@ def signup_page():
 def handle_signup():
     """handle signup page"""
     user_name = request.form.get("Username")
-    newUser = Persons(username=user_name)
+    password = request.form.get("Password")
+
+    
     user = Persons.query.filter_by(username=user_name).first()
+
+    if user_name  == "":
+        flash("Invalid Response. Please enter all fields to signup")
+        return redirect(url_for("signup_page"))
+
+    if password == "":
+        flash("Invalid Response. Please enter all fields to signup")
+        return redirect(url_for("signup_page"))
+
+
 
     if user:
         flash("Username exists. Please enter different user or click login")
         return redirect(url_for("signup_page"))
 
+    
+    newUser = Persons(username=user_name, password = generate_password_hash(password, method='sha256'))
     db.session.add(newUser)
     db.session.commit()
 
@@ -122,10 +137,22 @@ def login_page():
 def handle_login():
     """handle login form"""
     user_name = request.form.get("Username")
+    passcode = request.form.get("Password")
+
+
     checkuser = Persons.query.filter_by(username=user_name).first()
 
-    if not checkuser:
-        flash("Username does not exist. Please signup or try again!")
+    if user_name  == "":
+        flash("Invalid Response. Please enter all fields to login")
+        return redirect(url_for("login_page"))
+
+    if passcode == "":
+        flash("Invalid Response. Please enter all fields to login")
+        return redirect(url_for("login_page"))
+    
+
+    if not checkuser or not check_password_hash(checkuser.password, passcode):
+        flash("Incorrect Login-Credentials. Please try again!")
         return redirect(url_for("login_page"))
     else:
         login_user(checkuser)
