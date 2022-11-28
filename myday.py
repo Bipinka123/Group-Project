@@ -4,6 +4,15 @@ import flask
 from dotenv import load_dotenv, find_dotenv
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
+from weather import (
+    weather_description,
+    weather_image_full_url,
+    CURRENT_TEMP,
+    MAX_TEMP,
+    MIN_TEMP,
+    location,
+    FEELS_LIKE,
+)
 from flask import redirect, url_for, request, flash
 import requests
 from flask_login import (
@@ -41,6 +50,7 @@ class Persons(UserMixin, db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(100))
 
+
 with app.app_context():
     db.create_all()
 
@@ -57,10 +67,9 @@ def handle_signup():
     user_name = request.form.get("Username")
     password = request.form.get("Password")
 
-    
     user = Persons.query.filter_by(username=user_name).first()
 
-    if user_name  == "":
+    if user_name == "":
         flash("Invalid Response. Please enter all fields to signup")
         return redirect(url_for("signup_page"))
 
@@ -68,14 +77,13 @@ def handle_signup():
         flash("Invalid Response. Please enter all fields to signup")
         return redirect(url_for("signup_page"))
 
-
-
     if user:
         flash("Username exists. Please enter different user or click login")
         return redirect(url_for("signup_page"))
 
-    
-    newUser = Persons(username=user_name, password = generate_password_hash(password, method='sha256'))
+    newUser = Persons(
+        username=user_name, password=generate_password_hash(password, method="sha256")
+    )
     db.session.add(newUser)
     db.session.commit()
 
@@ -86,7 +94,7 @@ def handle_signup():
 @login_required
 def top_ten_news():
     """define news function"""
-    nyt_search_url = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
+    nyt_search_url = "https://api.nytimes.com/svc/topstories/v2/home.json"
     response = requests.get(
         nyt_search_url,
         params={
@@ -96,12 +104,12 @@ def top_ten_news():
     )
 
     json_data = response.json()
-    article_objects = json_data["response"]["docs"]
+    article_objects = json_data["results"]
 
-    recent_ten_news = article_objects
+    recent_top_stories = article_objects
     user = current_user.username
     return flask.render_template(
-        "news.html", recent_ten_news=recent_ten_news, user=user
+        "news.html", recent_top_stories=recent_top_stories, user=user
     )
 
 
@@ -139,17 +147,15 @@ def handle_login():
     user_name = request.form.get("Username")
     passcode = request.form.get("Password")
 
-
     checkuser = Persons.query.filter_by(username=user_name).first()
 
-    if user_name  == "":
+    if user_name == "":
         flash("Invalid Response. Please enter all fields to login")
         return redirect(url_for("login_page"))
 
     if passcode == "":
         flash("Invalid Response. Please enter all fields to login")
         return redirect(url_for("login_page"))
-    
 
     if not checkuser or not check_password_hash(checkuser.password, passcode):
         flash("Incorrect Login-Credentials. Please try again!")
@@ -164,7 +170,17 @@ def handle_login():
 def main_page():
     """define mainpage"""
     user = current_user.username
-    return flask.render_template("main.html", user=user)
+    return flask.render_template(
+        "main.html",
+        user=user,
+        current_temp=CURRENT_TEMP,
+        max_temp=MAX_TEMP,
+        min_temp=MIN_TEMP,
+        image_url=weather_image_full_url,
+        location=location,
+        description=weather_description(),
+        feels_like=FEELS_LIKE,
+    )
 
 
 @app.route("/logout", methods=["GET", "POST"])

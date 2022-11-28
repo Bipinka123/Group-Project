@@ -11,6 +11,7 @@
         float: right;
         float: top;
         display: block;
+        margin-right: 20px;
         font-size: 150%;
         color: rgba(237, 21, 194, 0.852);
         outline-style: outset;
@@ -54,16 +55,50 @@
         color: red;
         font-size: large;
     }
+
+    .weather {
+        margin-left: 450px;
+        border: 0px solid;
+        width: fit-content;
+        background-color: antiquewhite;
+    }
+
+    p {
+        padding-left: 5px;
+        margin: 0;
+        font-size: 
+        15px;
+    }
+    .news{
+        margin-left: 100px;
+        font-size: x-large;
+    }
+    .book{
+        margin-left: 650px;
+        font-size: x-large;
+    }
+</style>
 </style>
 
-<body background-color="lightblue">
+<body style="background-color:powderblue;">
     <a class="logout" href="{{url_for('handle_logout')}}">Log Out</a>
 
     <h1>Good Morning: {{user}}</h1>
 
-    <a class="news" href="{{url_for('top_ten_news')}}">Go to News</a><br><br>
+    <span><a class="news" href="{{url_for('top_ten_news')}}">Go to News</a>
 
-    <a class="book" href="{{url_for('top_selling_books')}}">Go to Top selling books</a><br><br>
+    <a class="book" href="{{url_for('top_selling_books')}}">Go to Top selling books</a></span>
+
+    <div class="weather">
+        <p style="color:rgb(134, 5, 5)">Today's weather</p>
+        <img src={{image_url}} alt="weather Icon">
+        <p><b style="color:blue">Location: </b> {{location}} </p>
+        <p><b style="color:blue">Weather Description: </b>{{description}}</p>
+        <p><b style="color:blue">Current Temperature: </b>{{current_temp}}</p>
+        <p><b style="color:blue">Feels Like: </b>{{feels_like}}</p>
+        <p><b style="color:blue">Max Temp: </b>{{max_temp}} , <b style="color:blue">Min Temp: </b>{{min_temp}}</p>
+    </div>
+</span>
 
     <h3>We Love to hear from you. Please, Leave us your feedback.</h3>
 
