@@ -12,6 +12,7 @@
         float: top;
         display: block;
         margin-right: 20px;
+
         font-size: 150%;
         color: rgba(237, 21, 194, 0.852);
         outline-style: outset;
@@ -71,13 +72,18 @@
     }
 
     .news {
+        outline-style: outset;
+        outline-color: rgb(241, 11, 11);
         margin-left: 100px;
+        margin-top: 30px;
         font-size: x-large;
     }
 
     .book {
+        outline-style: outset;
+        outline-color: rgb(241, 11, 11);
         margin-left: 650px;
-
+        margin-top: 300px;
         font-size: x-large;
     }
 </style>
@@ -86,7 +92,7 @@
 <body style="background-color:powderblue;">
     <a class="logout" href="{{url_for('handle_logout')}}">Log Out</a>
 
-    <h1>Good Morning: {{user}}</h1>
+    <h1><b style="color:green">Good Morning: </b> <b style="color:rgb(2, 27, 19)">{{user}}</b></h1>
 
     <span><a class="news" href="{{url_for('top_ten_news')}}">Go to News</a>
 
