@@ -189,6 +189,3 @@ def handle_logout():
     """handling logout"""
     logout_user()
     return redirect(url_for("login_page"))
-
-
-app.run(debug=True)
