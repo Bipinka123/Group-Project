@@ -74,7 +74,21 @@ python3+, Flask framework, html/css, postgress database, Rest API Integration an
 </html>
 
 
+* **2** main.html(my day)
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <title>My Day</title>
+</head>
+<style> </style>
+
+<body>
+    <h1>Good Morning</h1><br>
+    
+</body>
+
+</html>
 
 
 
