@@ -1,4 +1,8 @@
-# Group-Project: Bipin Kadariya, Anol Saha, Binod Subedi
+# Group Project Anup Shah, Bipin Kaderiya, Binod Subedi
+
+<h1 align = "center" > My Day </h1>
+
+<h5 target = "_blank"> Deployed on https://mayday.fly.dev/ </h5>
 
 
 ### Description
@@ -37,6 +41,7 @@ python3+, Flask framework, and other packages, html/css
 
 
 * **2** : We couldn't load the API to the html pages when using render_template function, the Flask expects those html files to be under templates folde. After using Google and StackOverflow for a while and we could only find the solution.
+
 
 
 
