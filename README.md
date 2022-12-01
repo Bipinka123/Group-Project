@@ -1,4 +1,4 @@
-# Group Project Anup Shah, Bipin Kaderiya, Binod Subedi
+# Group Project Anol Saha, Bipin Kaderiya, Binod Subedi
 
 <h1 align = "center" > My Day </h1>
 
