@@ -51,3 +51,6 @@ python3+, Flask framework, html/css, postgress database, Rest API Integration an
 ### Challenges we faced:
             ''' Time because of Final Exams approaching and physical proximity because we could solve some issues within minutes if we were in close physical proximity'''
 
+### Pull Requests:
+            ''' https://github.com/Bipinka123/Group-Project/pull/19'''
+            '''https://github.com/Bipinka123/Group-Project/pull/18'''
