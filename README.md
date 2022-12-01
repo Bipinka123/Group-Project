@@ -4,12 +4,15 @@
 
 <h5 target = "_blank"> Deployed on https://mayday.fly.dev/ </h5>
 
+### Group Proposal 
+            ''' Google Doc link : https://docs.google.com/document/d/1NWkmTldOlEkKz9oeSCJ2IgNRSkMFJGBN_Q0vxiUz6HQ/edit# '''
+
 
 ### Description
 Myday app built with flask, html/css using The New York Times API and Weather API. Users can log into their personalized account to get details about today's news, weather, Top ten bestselling books details which is dynamically generated.
 
-### Requirements
-python3+, Flask framework, and other packages, html/css
+### Technical Requirements
+python3+, Flask framework, html/css, postgress database, Rest API Integration and other packages
 
 ### Getting Started
 
@@ -36,11 +39,17 @@ python3+, Flask framework, and other packages, html/css
 
 ### Technical Issues Encountered 
 
-
 * **1** : Generating the buttons on login display, we encountered issue with size of the button and ended up resizing signup and sign in buttons. We looked for StackOverflow examples and read the documentation in details.
 
 
 * **2** : We couldn't load the API to the html pages when using render_template function, the Flask expects those html files to be under templates folde. After using Google and StackOverflow for a while and we could only find the solution.
+
+
+### Things we enjoyed:
+            ''' Working together with flexible time frame with the help of Git Branch '''
+
+### Challenges we faced:
+            ''' Time because of Final Exams approaching and physical proximity because we could solve some issues within minutes if we were in close physical proximity'''
 
 
 
