@@ -7,12 +7,33 @@
 ### Group Proposal 
             ''' Google Doc link : https://docs.google.com/document/d/1NWkmTldOlEkKz9oeSCJ2IgNRSkMFJGBN_Q0vxiUz6HQ/edit# '''
 
+### Public GitHub Link
+            ''' https://github.com/Bipinka123/Group-Project '''
+
 
 ### Description
-Myday app built with flask, html/css using The New York Times API and Weather API. Users can log into their personalized account to get details about today's news, weather, Top ten bestselling books details which is dynamically generated.
+Myday app built with flask, html/css using The New York Times API and Weather API. Users can log into their personalized account to get details about today's news, weather, Top ten bestselling books details which is dynamically generated. This app serves to start off user's day very smoothly with weather data and news data. 
 
 ### Technical Requirements
-python3+, Flask framework, html/css, postgress database, Rest API Integration and other packages
+python3+, Flask framework, html/css, postgress database, Rest API Integration and other packages, Flask Login
+
+### Stretch Features 
+
+            * OzoKJNg84mTqstj
+             Weather API: OpenWeather
+             UI will have a weather dashboard displaying weather for your current location (which will be detected)
+             There will be an icon (not static, it will be based on the weather) with a temperature and location
+            
+            *0MFeFkB9CIkw3MW
+             Login with password (password will be hashed and the hash will be stored)
+             Password will be hashed in the flask server before being sent to database
+             We may use bcrypt library
+             
+            *GU2HEOMXDGXaURY
+            NYT API to fetch top books
+            They will be listed in order
+            There will a button or link that will take users to the amazon page for that book
+
 
 ### Getting Started
 
@@ -47,10 +68,26 @@ python3+, Flask framework, html/css, postgress database, Rest API Integration an
 
 ### Things we enjoyed:
             ''' Working together with flexible time frame with the help of Git Branch '''
+            ''' Enjoyed working with API and implementing a password. Was able to generate the hashed password which was nice to learn '''
 
 ### Challenges we faced:
             ''' Time because of Final Exams approaching and physical proximity because we could solve some issues within minutes if we were in close physical proximity'''
+            
+            ''' We had many problems while working with beautification. There was a resize issue we spent a lot of time on where the content on the page would resize if moniter resolution changed'''
+            
+            ''' We also had problem accessing a good API for sharemarket as most were not free and had to paid. As a result, we did not implement sharemarket API'''
 
 ### Pull Requests:
+            
+            Binod
             ''' https://github.com/Bipinka123/Group-Project/pull/19'''
             '''https://github.com/Bipinka123/Group-Project/pull/18'''
+            
+            Anol:
+            '''https://github.com/Bipinka123/Group-Project/pull/13'''
+            '''https://github.com/Bipinka123/Group-Project/pull/8'''
+            
+            Bipin:
+           '''https://github.com/Bipinka123/Group-Project/pull/6'''
+           ''' https://github.com/Bipinka123/Group-Project/pull/10'''
+            
